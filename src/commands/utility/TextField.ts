@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import { Command } from '../../types/Command';
 
 export const textField: Command = {
@@ -10,7 +10,7 @@ export const textField: Command = {
             .setDescription('Type your input to send as a message (required)')
             .setRequired(true)), // Make the input required
     run: async function (interaction: ChatInputCommandInteraction): Promise<void> {
-        const input = interaction.options.getString('input');
-        await interaction.reply({ content: `You entered: ${input}`, ephemeral: true }); // Acknowledge the command
+        const input = interaction.options.getString('input'); // Get the input from the command
+        await interaction.reply({ content: `You entered: ${input}`, ephemeral: true }); // Respond with the input
     }
 };
